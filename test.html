@@ -4,39 +4,6 @@
         <meta charset="utf-8">
         <title>c语言</title>
         <style>
-            .ul{
-                list-style-type: none;
-                background: #333333;
-                margin: 0;
-                padding: 0;
-                width: 15%;
-                height: 100%;
-                overflow: auto;
-                position: fixed;
-            }
-            .li .a{
-                font-family: "microsoft yahei";
-                text-decoration: none;
-                color: white;
-                padding: 6px 12px;
-                display: block;
-                text-align: center;
-            }
-            .li .a.active {
-                background-color: black
-                color: white;
-            }
-
-            .li .a:hover:not(.active){
-                background: orangered;
-            }
-            body{
-                background: #111111;
-                background-image: url(c4.jpg);
-                background-size:650px;
-                background-position: top;
-                background-position-x: right;
-                }
                 
         </style>
         <link rel="stylesheet" href="../bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/css/bootstrap.min.css" />
@@ -115,16 +82,17 @@
             xmlhttp.open("GET","ReadChapter.php?chapter=Chapter"+Chapter,true);//设定请求
             xmlhttp.send();//发送请求
         </script>
-        <div class="col-3">
-            <ul class="ul">
-                <li class="li"><a class="a" class="active" href ="#zhishidian">目录</a></li>
-                <li class="li"><a class="a" href ="#zhishidian">知识点1</a></li>
-                <li class="li"><a class="a" href ="#zhishidian">知识点2</a></li>
-                <li class="li"><a class="a" href ="#zhishidian">知识点3</a></li>
-                <li class="li"><a class="a" href ="#zhishidian">最后实验</a></li>
+        <div class="row">
+        <div class="col-2 bg-light">
+            <ul class="navbar-nav text-sm-center"style="font-size: 25px;">
+                <li class="nav-item text-primary"style="font-size: 35px;padding:25px;">目录</li>
+                <li class="nav-item text-primary"><a class="nav-link" href ="#zhishidian">知识点1</a></li>
+                <li class="nav-item text-primary"><a class="nav-link" href ="#zhishidian">知识点2</a></li>
+                <li class="nav-item text-primary"><a class="nav-link" href ="#zhishidian">知识点3</a></li>
+                <li class="nav-item text-primary"><a class="nav-link" href ="#zhishidian">最后实验</a></li>
             </ul>
         </div>
-        <div class="col-9 container" style="float: right;height: 2000px;">
+        <div class="col-9 container" style="height: 2000px;">
             <ul id="tabcontent" class="nav navbar nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#menu1">awefa</a>
@@ -136,6 +104,7 @@
                     
                 </div>
             </div>
+        </div>
         </div>
     </body>
 </html>

@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2019-04-09 22:31:53
  * @Last Modified by:   anchen
- * @Last Modified time: 2019-04-09 22:35:28
+ * @Last Modified time: 2019-04-14 18:36:13
  */
 $value = "你好吗";
 echo "<head>
@@ -18,8 +18,15 @@ echo "<head>
     <body>";
 echo "<div class='container card' style='padding-bottom: 25px;padding-top: 15px;font-size: 20px;'>
             <p class='card-body shadow' style='background-color: lightgoldenrodyellow;'>".$value."</p>
-            <input type='text' style='padding: 5px;' class='shadow-sm rounded-lg' value='内容' />
-            <input type='button' class='btn-primary btn-sm' value='提交'/>
-            <p style='font-size: 20px;'>内发i而非我访问偶极矩</p>
+            <div class='card-columns d-flex justify-content-around'>
+                <button class='btn btn-primary card-body' style='margin:25px;'>啊违法</button>
+                <button class='btn btn-primary card-body' style='margin:25px;'>啊违法</button>
+                <button class='btn btn-primary card-body' style='margin:25px;'>啊违法</button>
+                <button class='btn btn-primary card-body' style='margin:25px;'>啊违法</button>
+            </div>
+            <button data-toggle='collapse' class='btn btn-lg btn-primary' data-target='#p'>答案</button>
+            <div id='p' class='collapse' style='font-size: 20px;'>
+            <p>内发i而非我访问偶极矩</p>
+            </div>
         </div></body>";
         ?>

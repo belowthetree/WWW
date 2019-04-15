@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    function test(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                document.getElementById("p1").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET", "test.php", true);
+        xmlhttp.send();
+    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                document.getElementById("p").innerHTML = xmlhttp.responseText;
+                test();
+            }
+        }
+    xmlhttp.open("GET", "test.php", true);
+    xmlhttp.send();
+    </script>
+    <p id='p'></p>
+    <div id="t1">
+        <div id='p0'></div>
+        <div id="p1"></div>
+    </div>
+
+    </body>
+</html>

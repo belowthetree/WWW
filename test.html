@@ -47,55 +47,73 @@
     </head>
     <body>
         <script>
+            var Chapter = "1";
+        function getTest(id, count){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                    document.getElementById(id).innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "Readtest.php?chapter=Chapter"+Chapter+"&count="+(count+1), true);
+            xmlhttp.send();
+            }
+        </script>
+        <script>
             var content = "";
             var result;
             var count = 0;
-            var tag = false;
-            xmlhttp=new XMLHttpRequest();
-            alert("a");
+            xmlhttp=new XMLHttpRequest();//这几句设定变量
+            
+            function ChangeChapter(cpt){
+                Chapter = cpt;
+            }
             xmlhttp.onreadystatechange=function()
             {
                 if (xmlhttp.readyState==4 && xmlhttp.status==200)
                 {
-                    result = xmlhttp.responseText;
-                    document.getElementById("tabcontent").innerHTML = "awoiefjoi";
+                    result = xmlhttp.responseText;//这里获取结果
                     var ul = document.getElementById("tabcontent");
                     var div = document.getElementsByClassName("tab-content");
                     ul.innerHTML="";
-                    ul.setAttribute("class", "nav navbar nav-tabs justfy-centent-center")
+                    ul.setAttribute("class", "nav navbar nav-tabs justfy-centent-center")//设定导航栏bootstrap的样式
                     div.innerHTML="";
                     for(var i = 0;i < result.length;i++){
-                        if(result[i]=="#")
+                        if(result[i]=="#")//当获取到#时，就可以开始读取标题了
                         {
                             i++;
                             var li = document.createElement("li");
                             var a = document.createElement("a");
+                            li.setAttribute("class","nav-item");
                             a.setAttribute("class","nav-link");
                             a.setAttribute("data-toggle", "tab");
-                            a.setAttribute("href", "#menu"+count);
-                            while(result[i]!="#"||i > result.length){
+                            a.setAttribute("href", "#menu"+count);//上面几句都是设定标签的样式<li class='nav-item'><a class='nav-link' data-toggle="tab" href='#menu'+count></a></li>, 这里的count用来统计标题的个数
+                            while(result[i]!="#"||i > result.length){//这里将标题内容写入
                                 a.innerHTML += result[i++];
                             }
-                            li.setAttribute("class","nav-item");
                             li.appendChild(a);
                             ul.appendChild(li);
                             var p = document.createElement("p");
                             var div = document.createElement("div");
-                            while(result[i++]!="#"||i > result.length)
+                            while(result[i++]!="#"||i > result.length)//寻找下一个#，这个#后面跟着正文内容
                                 ;
-                            while(result[i]!="#"||i > result.length){
+                            while(result[i]!="#"||i > result.length){//写入正文内容
                                 p.innerHTML += result[i++];
                             }
                             div.setAttribute("class", "container tab-pane fade");
-                            div.setAttribute("id", "menu"+count++);
+                            div.setAttribute("id", "menu"+count);
                             div.appendChild(p);
+                            var test = document.createElement("div");
+                            test.setAttribute("id", "test"+count);
+                            div.appendChild(test);
                             document.getElementById("content").appendChild(div);
+                            getTest("test"+count, count++);
                         }
                     }
                 }
             }
-            xmlhttp.open("GET","ReadChapter.php",true);
-            xmlhttp.send();
+            xmlhttp.open("GET","ReadChapter.php?chapter=Chapter"+Chapter,true);//设定请求
+            xmlhttp.send();//发送请求
         </script>
         <div class="col-3">
             <ul class="ul">

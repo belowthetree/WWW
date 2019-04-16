@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2019-04-09 20:48:19
  * @Last Modified by:   anchen
- * @Last Modified time: 2019-04-16 11:19:16
+ * @Last Modified time: 2019-04-16 12:44:00
  */
 $filename = $_GET['chapter'];
 $num = $_GET['count'];
@@ -55,15 +55,15 @@ foreach ($title as $key1 => $value1) {
         die("no test");
     $content = "";
     foreach ($choice[$key1] as $key2 => $value2) {
-        $content = $content."<button class='btn col-2 btn-primary card-body'>".$choice[$key1][$key2]."</button>";
+        $content = $content."<button class='btn card-body' style='font-size:30px;  padding:15px; border: grey solid 2px;border-radius: 35px;'>".$choice[$key1][$key2]."</button>";
     }
     echo "
-    <div class='container card' style='padding-bottom: 25px;padding-top: 15px;font-size: 20px;'>
+    <div class='container card' style='padding-bottom: 15px;padding-top: 15px;font-size: 20px;'>
     <p class='card-body shadow' style='background-color: lightgoldenrodyellow;'>".$value1."</p>
-    <div class='card-columns d-flex justify-content-around' style='padding:15px;'>
+    <div class='card-columns d-flex justify-content-around' style='padding:55px;'>
         ".$content."
     </div>
-    <button data-toggle='collapse' class='btn btn-lg btn-primary' data-target='#p".$key1.$num."' style='padding:15px; margin-left:300px;margin-right:300px;'>答案</button>
+    <button data-toggle='collapse' class='btn btn-lg btn-primary' data-target='#p".$key1.$num."' style='padding:15px; margin-left:400px;margin-right:400px;'>答案</button>
     <div id='p".$key1.$num."' class='collapse' style='font-size: 20px;' style='padding:15px;'>
         <p>".$answer[$key1]."</p>
     </div>

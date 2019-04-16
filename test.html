@@ -61,6 +61,8 @@
                             li.appendChild(a);
                             ul.appendChild(li);
                             var p = document.createElement("p");
+                            p.setAttribute("class", "shadow");
+                            p.setAttribute("style", "background-color: lightgoldenrodyellow;padding:25px;");
                             var div = document.createElement("div");
                             while(result[i++]!="#"||i > result.length)//寻找下一个#，这个#后面跟着正文内容
                                 ;

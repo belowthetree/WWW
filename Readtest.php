@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2019-04-09 20:48:19
  * @Last Modified by:   anchen
- * @Last Modified time: 2019-04-15 14:09:47
+ * @Last Modified time: 2019-04-16 11:19:16
  */
 $filename = $_GET['chapter'];
 $num = $_GET['count'];
@@ -63,8 +63,8 @@ foreach ($title as $key1 => $value1) {
     <div class='card-columns d-flex justify-content-around' style='padding:15px;'>
         ".$content."
     </div>
-    <button data-toggle='collapse' class='btn btn-lg btn-primary' data-target='#p' style='padding:15px; margin-left:300px;margin-right:300px;'>答案</button>
-    <div id='p' class='collapse' style='font-size: 20px;' style='padding:15px;'>
+    <button data-toggle='collapse' class='btn btn-lg btn-primary' data-target='#p".$key1.$num."' style='padding:15px; margin-left:300px;margin-right:300px;'>答案</button>
+    <div id='p".$key1.$num."' class='collapse' style='font-size: 20px;' style='padding:15px;'>
         <p>".$answer[$key1]."</p>
     </div>
     </div>

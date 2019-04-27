@@ -46,29 +46,31 @@
                     ul.setAttribute("class", "nav navbar nav-tabs justfy-centent-center")//设定导航栏bootstrap的样式
                     div.innerHTML="";
                     for(var i = 0;i < result.length;i++){
-                        if(result[i]=="#")//当获取到#时，就可以开始读取标题了
+                        if(result[i]=="#"&&result[i+1]=="#")//当获取到#时，就可以开始读取标题了
                         {
-                            i++;
+                            i+=2;
                             var li = document.createElement("li");
                             var a = document.createElement("a");
                             li.setAttribute("class","nav-item");
                             a.setAttribute("class","nav-link");
                             a.setAttribute("data-toggle", "tab");
                             a.setAttribute("href", "#menu"+count);//上面几句都是设定标签的样式<li class='nav-item'><a class='nav-link' data-toggle="tab" href='#menu'+count></a></li>, 这里的count用来统计标题的个数
-                            while(result[i]!="#"||i > result.length){//这里将标题内容写入
+                            while(result[i]!="#"&&result[i+1]!="#"||i > result.length){//这里将标题内容写入
                                 a.innerHTML += result[i++];
                             }
                             li.appendChild(a);
                             ul.appendChild(li);
-                            var p = document.createElement("p");
+                            var p = document.createElement("pre");
                             p.setAttribute("class", "shadow");
-                            p.setAttribute("style", "background-color: lightgoldenrodyellow;padding:25px;");
+                            p.setAttribute("style", "font-size:22px;background-color: lightgoldenrodyellow;padding:25px;white-space: pre-wrap;word-wrap: break-word;");
                             var div = document.createElement("div");
-                            while(result[i++]!="#"||i > result.length)//寻找下一个#，这个#后面跟着正文内容
-                                ;
-                            while(result[i]!="#"||i > result.length){//写入正文内容
+                            while(result[i]!="#"||result[i+1]!="#"||i > result.length)//寻找下一个#，这个#后面跟着正文内容
+                                i++;
+                            i+=2;
+                            while(result[i]!="#"||result[i+1]!="#"||i > result.length){//写入正文内容
                                 p.innerHTML += result[i++];
                             }
+                            i++;
                             div.setAttribute("class", "container tab-pane fade");
                             div.setAttribute("id", "menu"+count);
                             div.appendChild(p);

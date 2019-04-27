@@ -25,11 +25,9 @@
     xmlhttp.open("GET", "test.php", true);
     xmlhttp.send();
     </script>
-    <p id='p'></p>
-    <div id="t1">
-        <div id='p0'></div>
-        <div id="p1"></div>
-    </div>
-
+    <form action="tt.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" id="file" value="上传" />
+		<input type="submit" value="submit" />
+	</form>
     </body>
 </html>

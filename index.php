@@ -1,6 +1,6 @@
 <?php
 
-echo "<!DOCTYPE html>
+/*echo "<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8'>
@@ -55,6 +55,8 @@ echo "<!DOCTYPE html>
     aaa
     </div>
 </body>
-</html>"
-
+</html>"*/
+include"parsedown/Parsedown.php";
+$Parsedown = new Parsedown();
+echo $Parsedown->text("# Hello");
 ?>

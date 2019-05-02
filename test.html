@@ -11,9 +11,17 @@
         <script src="../bootstrap-4.3.1-dist/proper.js"></script>
         <script src="../bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/jquery-3.3.1/jquery-3.3.1.min.js"></script>
         <script src="../bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <!--引入样式文件-->
+<link rel="stylesheet" href="/mdeditor/examples/css/style.css" />
+<link rel="stylesheet" href="/mdeditor/css/editormd.css" />
+<!--引入js文件-->
+<script type="text/javascript" src="/mdeditor/examples/js/jquery.min.js"></script>
+<script type="text/javascript" src="/mdeditor/editormd.js"></script>
+<script type="text/javascript" src="/mdeditor/editormd.amd.js"></script>
     </head>
     <body>
-        <script>
+        <!--<script>
             var Chapter = "1";
         function getTest(id, count){
             var xmlhttp = new XMLHttpRequest();
@@ -85,7 +93,7 @@
             }
             xmlhttp.open("GET","ReadChapter.php?chapter=Chapter"+Chapter,true);//设定请求
             xmlhttp.send();//发送请求
-        </script>
+        </script>-->
         <div class="row">
         <div class="col-2 bg-light">
             <ul class="navbar-nav text-sm-center"style="font-size: 25px;">
@@ -102,12 +110,32 @@
                     <a class="nav-link" data-toggle="tab" href="#menu1">awefa</a>
                 </li>
             </ul>
-            
-            <div id="content" class="tab-content">
-                <div id="home" class="container tab-pane active"><br>
-                    
-                </div>
+            <script>
+            function gethtml(){
+                var html = document.getElementsByClassName("markdown-body")[0];
+                $("#idx").html(html);
+                alert(html);
+            }
+            </script>
+            <button onclick="gethtml()">点击就送</button>
+            <div id='idx'></div>
+            <div id="test-editormd" name="post[post_content]">
+                <textarea name="post[post_content]"></textarea>
             </div>
+            <script>
+            $(function() {
+                var testEditor = editormd("test-editormd", {
+                width   : "90%",
+                height  : 600,
+                syncScrolling : "single",
+                path    : "/mdeditor/lib/",
+                imageUpload : true,
+                imageFormats : ["jpg","jpeg","gif","png","bmp","webp"],
+                imageUploadURL : "{:U('Portal/AdminPost/upload')}",//上传图片用，，这是tp的上传
+                saveHTMLToTextarea : true
+                })
+            });
+</script>
         </div>
         </div>
     </body>

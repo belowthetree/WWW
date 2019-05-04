@@ -1,0 +1,17 @@
+.col-2 {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	background: #0086B3;
+}
+.btn{
+	background: #0086B3;
+}
+.btn:hover{
+	color: #10707F;
+	background: #10707F;
+}
+a:hover{
+	background: gray;
+}

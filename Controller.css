@@ -8,10 +8,10 @@
 .btn{
 	background: #0086B3;
 }
+a:hover{
+	background: gray;
+}
 .btn:hover{
 	color: #10707F;
 	background: #10707F;
-}
-a:hover{
-	background: gray;
 }

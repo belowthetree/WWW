@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="Controller.css" />
 		<script>
 			function getcontent(chapter, info){
+				window.sessionStorage.setItem("chap", chapter);
+				window.sessionStorage.setItem("inf", info);
 				$.post("getcontent", {
 					chapter:chapter,
 					info:info
@@ -20,12 +22,15 @@
 					$("#test").html(data['info']);
 				});
 			}
+			function jump(){
+				window.open("edit.html");
+			}
 		</script>
 	</head>
 	<body>
 		<ul class="col-2 fixed-top sidebar" style="height: 100%;width: 100%;padding-top: 25px;">
 			<ul class="dropdown nav" style="width: 100%;">
-				<button class="btn" style="color: white;width: 100%;" data-toggle="collapse"
+				<button class="btn t" style="color: white;width: 100%;" data-toggle="collapse"
 				data-target="#demo">
 					第一章
 				</button>
@@ -36,7 +41,7 @@
 				</li>
 			</ul>
 			<ul class="dropdown nav" style="width: 100%;">
-				<button type="button" style="color: white;width: 100%;" class="btn" data-toggle="collapse"
+				<button type="button" style="color: white;width: 100%;" class="btn t" data-toggle="collapse"
 				data-target="#demo2">
 					第二章
 				</button>
@@ -58,7 +63,10 @@
 			</ul>
 			<div class="tab-content">
 				<div id="teach" class="container tab-pane active">
-					<h1>教程</h1>
+					<button class="btn btn-primary" onclick="jump()">编辑</button>
+					<div>
+						<h1>教程</h1>
+					</div>
 				</div>
 				<div id="test" class="container tab-pane fade">
 					<h1>题目</h1>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+    <script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="./ueditor/lang/zh-cn/zh-cn.js"></script>
+	<!--下面是Markdown的部分-->
+	<link rel="stylesheet" href="./mdeditor/examples/css/style.css" />
+	<link rel="stylesheet" href="./mdeditor/css/editormd.css" />
+	<script type="text/javascript" src="./mdeditor/examples/js/jquery.min.js"></script>
+	<script type="text/javascript" src="./mdeditor/editormd.js"></script>
+	<script type="text/javascript" src="./mdeditor/editormd.amd.js"></script>
+	<script>
+		function userichtext(){
+			var editor = UE.getEditor('editor');
+		}
+		function usemd(){
+			window.testEditor = editormd("editormd", {
+                width   : "90%",
+                height  : 600,
+                syncScrolling : "single",
+                path    : "./mdeditor/lib/",
+                imageUpload : true,
+                imageFormats : ["jpg","jpeg","gif","png","bmp","webp"],
+                imageUploadURL : "{:U('Portal/AdminPost/upload')}",//上传图片用，，这是tp的上传
+                saveHTMLToTextarea : true
+                });
+		}
+		function save(){
+			$.post("SaveEdit.php",{
+				type:window.type,
+				
+			})
+		}
+	</script>
+	<body>
+		<div id="editormd" name="post[post_content]">
+			<textarea name="post[post_content]"></textarea>
+		</div>
+		<script id="editor" type="text/plain" style="width:90%;height:600px;margin: auto;"></script>
+		<script>
+			function getcontent(){
+				$.get("GetEdit.php",
+				{chapter:window.sessionStorage.getItem("chap"),info:window.sessionStorage.getItem("inf")},
+				function(data){
+					var data = JSON.parse(data);
+					if(data.type=="md"){
+						usemd();
+					}
+					else if(data.type=="richtext"){
+						userichtext();
+					}
+					window.type = data.type;
+				});
+			}
+		</script>
+		<button class="btn btn-primary" onclick="save()">保存</button>
+	</body>
+</html>

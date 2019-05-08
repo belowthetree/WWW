@@ -46,7 +46,7 @@
 		<script>
 			function getcontent(){
 				$.get("GetEdit.php",
-				{chapter:window.sessionStorage.getItem("chap"),info:window.sessionStorage.getItem("inf")},
+				{type:"HTML",chapter:window.sessionStorage.getItem("chap"),info:window.sessionStorage.getItem("inf")},
 				function(data){
 					var data = JSON.parse(data);
 					if(data.type=="md"){

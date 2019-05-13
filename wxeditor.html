@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制台 - 编辑</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+  <script src="/jquery.js"></script>
+</head>
+
+<body class="gray-bg text-center container">
+  <!-- <h1 style="margin:auto">文章编辑</h1> -->
+            <div class="col-sm-9 animated fadeInRight">
+                <div class="mail-box">
+                    <div class="mail-text h-100">
+                        <div id="content" class="summernote" style="height:500px;">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="mail-body text-right tooltip-demo">
+                        <button onclick="sendContent()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> 发送</button>
+                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a>
+                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> 存为草稿</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="js/plugins/summernote/summernote.min.js"></script>
+    <script src="js/plugins/summernote/summernote-zh-CN.js"></script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$(".click2edit").summernote({focus:true})};var save=function(){var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
+    </script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+  <script>
+      function sendContent(){
+        var content = $(".note-editable").html();
+        alert(content);
+        //$.post("/wxapi/sendContent.php",{type:"send",content:
+      }
+  </script>
+</body>
+
+</html>

@@ -16,10 +16,8 @@
 	<script type="text/javascript" src="./mdeditor/editormd.js"></script>
 	<script type="text/javascript" src="./mdeditor/editormd.amd.js"></script>
 	<script>
-		function userichtext(){
-			var editor = UE.getEditor('editor');
-		}
 		function usemd(){
+			$("#editor").remove();
 			window.testEditor = editormd("editormd", {
                 width   : "90%",
                 height  : 600,
@@ -27,8 +25,9 @@
                 path    : "./mdeditor/lib/",
                 imageUpload : true,
                 imageFormats : ["jpg","jpeg","gif","png","bmp","webp"],
-                imageUploadURL : "{:U('Portal/AdminPost/upload')}",//上传图片用，，这是tp的上传
-                saveHTMLToTextarea : true
+                imageUploadURL : "./api/uploadimage.php",//上传图片用，，这是tp的上传
+                saveHTMLToTextarea : true,
+				emoji:true
                 });
 		}
 		function save(){
@@ -42,8 +41,16 @@
 		<div id="editormd" name="post[post_content]">
 			<textarea name="post[post_content]"></textarea>
 		</div>
+		<script>
+			function userichtext(){
+				$("#editormd").remove();
+				var editor = UE.getEditor('editor');
+			}
+		</script>
 		<script id="editor" type="text/plain" style="width:90%;height:600px;margin: auto;"></script>
 		<script>
+			userichtext();
+			usemd();
 			function getcontent(){
 				$.get("GetEdit.php",
 				{type:"HTML",chapter:window.sessionStorage.getItem("chap"),info:window.sessionStorage.getItem("inf")},
@@ -59,6 +66,6 @@
 				});
 			}
 		</script>
-		<button class="btn btn-primary" onclick="save()">保存</button>
+		<button id="btn" class="btn btn-primary" >保存</button>
 	</body>
 </html>

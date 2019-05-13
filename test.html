@@ -42,11 +42,11 @@
         <script src="./mdeditor/editormd.js"></script> 
             <script>
             $(function() {
-                $.get('/mdeditor/examples/test.md', function(md){
+                $.get('./mdeditor/examples/test.md', function(md){
                     testEditor = editormd("test-editormd", {
                         width: "90%",
                         height: 740,
-                        path : '/mdeditor/lib/',
+                        path : './mdeditor/lib/',
                         theme : "dark",
                         previewTheme : "dark",
                         editorTheme : "pastel-on-dark",
